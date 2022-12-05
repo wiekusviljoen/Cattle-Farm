@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using FarmingCattleApp.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<FarmDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FarmDbContext") ?? throw new InvalidOperationException("Connection string 'FarmDbContext' not found.")));
 builder.Services.AddDbContext<CattleFarmDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CattleFarmDbContext") ?? throw new InvalidOperationException("Connection string 'CattleFarmDbContext' not found.")));
 
