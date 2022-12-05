@@ -84,7 +84,7 @@ namespace FarmingCattleApp.Models
         public double FeedPrice { get; set; }
 
         [Required]
-        [Display(Name = "Times Feed/week")]
+        [Display(Name = "Times Fed/week")]
 
         public double FeedQuantity { get; set; }
 
