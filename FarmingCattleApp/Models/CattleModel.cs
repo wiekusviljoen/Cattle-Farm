@@ -127,14 +127,14 @@ namespace FarmingCattleApp.Models
             get { return BullCalfFeed + CowFeed + BullCalfFeed + BullCalfFeed; }
         }
 
-        [Display(Name = "Bags of Feed")]
+        [Display(Name = "Bags of Feed per day")]
         public double BagsOfFeed
         {
             get { return FeedTotal / 50; }
         }
 
         [DataType(DataType.Currency)]
-        [Display(Name = "Price of Feed")]
+        [Display(Name = "Price of Feed per day")]
         public double PriceOfBagsTotal
         {
             get { return BagsOfFeed * FeedPrice; }

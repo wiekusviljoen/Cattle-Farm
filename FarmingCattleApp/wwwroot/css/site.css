@@ -19,6 +19,10 @@ body {
 
 .totals {
     
-    text-align-last:auto;
+   
+    border:double;
+    text-align:center;
+    
+    
    
 }
