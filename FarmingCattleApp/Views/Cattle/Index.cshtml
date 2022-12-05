@@ -1,0 +1,105 @@
+﻿@model IEnumerable<FarmingCattleApp.Models.CattleModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Camp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Breed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bulls)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cows)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BullCalf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CowCalf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewCalf)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Camp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bulls)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cows)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BullCalf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CowCalf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewCalf)
+            </td>
+
+           
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            
+            
+   
+        </tr>
+        
+}
+    </tbody>
+</table>
+<div class="totals">
+<dt class="col-sm-2">
+          Total Bulls:  @Model.Sum(i=>i.Bulls) </dt>
+ 
+<br>
+<dt class="col-sm-2">
+          Total Cows: @Model.Sum(i=>i.Cows) </dt>
+ 
+<br>
+
+<dt class="col-sm-2">
+            Bull Calfs: @Model.Sum(i=>i.BullCalf) </dt>
+ <br>
+<dt class="col-sm-2">
+            Cow Calfs: @Model.Sum(i=>i.CowCalf) </dt>
+<br>
+ <dt class="col-sm-2">
+            Total : @Model.Sum(i=>i.Total)
+        </dt> 
+</div>
