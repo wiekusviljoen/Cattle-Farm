@@ -103,28 +103,33 @@ namespace FarmingCattleApp.Models
         // 3kg per 100kg body mass
         public int BullsFeed
         {
-            get { return Bulls * 2; }
+            get { return Bulls * 3; }
         }
 
         public int CowFeed
         {
-            get { return Cows * 2; }
+            get { return Cows * 1; }
         }
 
         public int CowCalfFeed
         {
-            get { return CowCalf * 2; }
+            get { return CowCalf * 1; }
         }
 
         public int BullCalfFeed
         {
-            get { return BullCalf * 2; }
+            get { return BullCalf * 1; }
+        }
+
+        public int NewCalfFeed
+        {
+            get { return NewCalf * 0; }
         }
 
         [Display(Name = "Total Kg of Feed")]
         public int FeedTotal
         {
-            get { return BullCalfFeed + CowFeed + BullCalfFeed + BullCalfFeed; }
+            get { return BullsFeed  + CowFeed + BullCalfFeed + CowCalfFeed; }
         }
 
         [Display(Name = "Bags of Feed per day")]
