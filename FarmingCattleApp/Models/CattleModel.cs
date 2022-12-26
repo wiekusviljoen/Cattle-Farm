@@ -94,7 +94,7 @@ namespace FarmingCattleApp.Models
         public string Notes { get; set; }
 
 
-        [Display(Name = "Total Cattle")]
+        [Display(Name = "Total")]
         public int Total
         {
             get { return Bulls + Cows + BullCalf + CowCalf + NewCalf; }
@@ -132,27 +132,40 @@ namespace FarmingCattleApp.Models
             get { return BullsFeed  + CowFeed + BullCalfFeed + CowCalfFeed; }
         }
 
-        [Display(Name = "Bags of Feed per day")]
-        public double BagsOfFeed
+       
+
+       
+
+        [DataType(DataType.Currency)]
+        [Display(Name = "Price of Feed per kg")]
+        public double PriceOfBagsTotal
         {
-            get { return FeedTotal / 50; }
+            get { return  FeedPrice / 50; }
         }
 
         [DataType(DataType.Currency)]
-        [Display(Name = "Price of Feed per day")]
-        public double PriceOfBagsTotal
+        [Display(Name = "Price of Feed per Day")]
+        public double PriceOfFeedTotal
         {
-            get { return BagsOfFeed * FeedPrice; }
+            get { return PriceOfBagsTotal * FeedTotal; }
         }
 
-       
+
 
         [DataType (DataType.Currency)]
         [Display(Name = "Price of Feed/Week")]
 
         public double FeedPricePerWeek
         {
-            get { return PriceOfBagsTotal * FeedQuantity; }
+            get { return PriceOfFeedTotal * FeedQuantity; }
+        }
+
+        [DataType(DataType.Currency)]
+        [Display(Name = "Price of Feed/month")]
+
+        public double FeedPricePerMonth
+        {
+            get { return FeedPricePerWeek * 4; }
         }
 
     }

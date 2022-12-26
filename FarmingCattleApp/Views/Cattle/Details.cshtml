@@ -132,20 +132,14 @@
             @Html.DisplayFor(model => model.FeedTotal)kg
         </dd>
 
+       
+
          <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BagsOfFeed)
+            @Html.DisplayNameFor(model => model.PriceOfFeedTotal)
         </dt>
 
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BagsOfFeed) Bags
-        </dd>
-
-         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PriceOfBagsTotal)
-        </dt>
-
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PriceOfBagsTotal) 
+            @Html.DisplayFor(model => model.PriceOfFeedTotal)
         </dd>
 
         
@@ -159,6 +153,15 @@
         <dd class="col-sm-10">
           @Html.DisplayFor(model => model.FeedPricePerWeek)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedPricePerMonth)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedPricePerMonth)
+        </dd>
+
         <dt>
             @{
                 var date = DateTime.Now.Date.Subtract(Model.DateAndTime);

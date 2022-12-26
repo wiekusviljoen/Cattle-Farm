@@ -22,21 +22,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Breed)
             </th>
+            
             <th>
-                @Html.DisplayNameFor(model => model.Bulls)
+                @Html.DisplayNameFor(model => model.Total)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cows)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BullCalf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CowCalf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewCalf)
-            </th>
+           
            
             <th></th>
         </tr>
@@ -53,22 +43,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Breed)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bulls)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cows)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BullCalf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CowCalf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewCalf)
-            </td>
 
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+           
            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
