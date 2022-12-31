@@ -9,5 +9,9 @@ namespace FarmingCattleApp.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the FarmingCattleAppUser class
 public class FarmingCattleAppUser : IdentityUser
 {
+    public string? Email { get; set; }
+    
+
+
 }
 
