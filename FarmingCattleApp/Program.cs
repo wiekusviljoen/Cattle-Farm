@@ -1,13 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FarmingCattleApp.Data;
+using Microsoft.AspNetCore.Identity;
+using FarmingCattleApp.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CattleFarmDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CattleFarmDbContext") ?? throw new InvalidOperationException("Connection string 'CattleFarmDbContext' not found.")));
 
+builder.Services.AddDefaultIdentity<FarmingCattleAppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<IdentityContext>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+
+var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection");
+builder.Services.AddDbContext<IdentityContext>(options =>
+    options.UseSqlServer(connectionString));
+
+
 
 var app = builder.Build();
 
@@ -23,11 +36,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

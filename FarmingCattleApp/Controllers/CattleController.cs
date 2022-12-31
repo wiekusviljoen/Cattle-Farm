@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FarmingCattleApp.Data;
 using FarmingCattleApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FarmingCattleApp.Controllers
 {
+    [Authorize]
     public class CattleController : Controller
     {
         private readonly CattleFarmDbContext _context;
@@ -22,7 +24,12 @@ namespace FarmingCattleApp.Controllers
         // GET: Cattle
         public async Task<IActionResult> Index()
         {
-              return View(await _context.CattleModel.ToListAsync());
+            // Set a value in the session
+            HttpContext.Session.SetString("Key", "Value");
+
+            // Get a value from the session
+            var value = HttpContext.Session.GetString("Key");
+            return View(await _context.CattleModel.ToListAsync());
         }
 
         // GET: Cattle/Details/5
