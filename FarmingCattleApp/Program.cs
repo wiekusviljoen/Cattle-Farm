@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FarmingCattleApp.Data;
 using Microsoft.AspNetCore.Identity;
 using FarmingCattleApp.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddDefaultIdentity<FarmingCattleAppUser>(options => options.Sig
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
+builder.Services.AddMemoryCache();
+builder.Services.ConfigureApplicationCookie(options => options.ExpireTimeSpan = TimeSpan.FromDays(1));
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 var connectionString = builder.Configuration.GetConnectionString("IdentityContextConnection");
 builder.Services.AddDbContext<IdentityContext>(options =>
@@ -37,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();
+
 app.UseSession();
 app.UseAuthorization();
 
