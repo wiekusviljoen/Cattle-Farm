@@ -7,9 +7,14 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:CattleFarmDbContext"
     },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:Server=(localdb):mssqllocaldb;Database=FarmingCattleApp;Trusted_Connection=True;MultipleActiveResultSets=true"
+    },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:IdentityContextConnection"
+      "connectionId": "ConnectionStrings:IdentityContextConnection",
+      "dynamicId": null
     }
   }
 }

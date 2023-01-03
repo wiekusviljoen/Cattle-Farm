@@ -1,3 +1,11 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/aspnetmvccruddbserver/databases/FarmingCattleApp",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:IdentityContextConnection",
+      "dynamicId": null
+    }
+  }
 }
